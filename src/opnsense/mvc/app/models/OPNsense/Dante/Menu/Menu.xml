@@ -1,0 +1,8 @@
+<menu>
+    <Services>
+      <Dante VisibleName="Dante" cssClass="fa fa-sitemap fa-fw">
+          <Settings order="10" url="/ui/dante/sockdglobal/index" />
+          <Log VisibleName="Log File" order="50" url="/diag_logs_dante.php"/>
+      </Dante>
+    </Services>
+</menu>

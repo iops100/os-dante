@@ -1,0 +1,64 @@
+<form>
+	<field>
+		<label>Rule order: </label>
+		<id>route.rulePosition</id>
+		<help><![CDATA[Order rules]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>FROM : FQDN or IP/CIDR:</label>
+		<id>route.fromIp</id>
+		<help><![CDATA[FQDN or IP/CIDR
+CIDR is Mandatory in case of IP]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>TO : FQDN or IP/CIDR:</label>
+		<id>route.toIp</id>
+		<help><![CDATA[FQDN or IP/CIDR
+CIDR is Mandatory in case of IP]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>TO : target Port or Service: </label>
+		<id>route.toPort</id>
+		<help><![CDATA[Could be a port number between 1 to 65535
+Or Service name (http, https, ssh)]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>VIA : FQDN or IP:</label>
+		<id>route.viaIp</id>
+		<help><![CDATA[FQDN or IP
+		You can use "direct" special word]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>VIA : target Port or Service: </label>
+		<id>route.viaPort</id>
+		<help><![CDATA[Could be a port number between 1 to 65535
+Or Service name (http, https, ssh)]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>Proxy Protocol: </label>
+		<id>route.proxyProtocol</id>
+		<help><![CDATA[The rule applies to requests using the given proxy protocol. Valid proxy protocols are socks_v4 and socks_v5.  The default is all supported proxy protocols.
+]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>Protocol: </label>
+		<id>route.protocol</id>
+		<help><![CDATA[The rule applies to the given protocols.  Valid values are tcp and udp.  The default is all supported protocols that can apply to the given commands.
+]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>Command: </label>
+		<id>route.command</id>
+		<help><![CDATA[The rule applies to the given commands.  Valid commands are bind, bindreply, connect, udpassociate and udpreply.  Can be used instead of, or to complement, protocol.  The default is all commands valid for the protocols allowed by the rule.
+]]></help>
+		<type>select_multiple</type>
+	</field>
+</form>

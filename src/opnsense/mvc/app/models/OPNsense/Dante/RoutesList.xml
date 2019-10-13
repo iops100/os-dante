@@ -1,0 +1,63 @@
+<model>
+	<mount>//OPNsense/dante/routeslist</mount>
+	<description>Opnsense Package to manage Dante Systems</description>
+	<version>1.1.0</version>
+	<items>
+		<routes>
+			<route type="ArrayField">
+				<rulePosition type="IntegerField">
+					<default>1</default>
+					<MinimumValue>1</MinimumValue>
+					<MaximumValue>999</MaximumValue>
+					<Required>Y</Required>
+				</rulePosition>
+				<fromIp type="TextField">
+					<default></default>
+					<Required>Y</Required>
+				</fromIp>
+				<toIp type="TextField">
+					<default></default>
+					<Required>Y</Required>
+				</toIp>
+				<toPort type="TextField">
+					<default></default>
+				</toPort>
+				<viaIp type="TextField">
+					<default></default>
+					<Required>Y</Required>
+				</viaIp>
+				<viaPort type="TextField">
+					<default></default>
+				</viaPort>
+				<proxyProtocol type="OptionField">
+					<default>socksv5</default>
+					<OptionValues>
+						<!-- <http>http</http> -->
+						<socksv4>socks_v4</socksv4>
+						<socksv5>socks_v5</socksv5>
+					</OptionValues>
+					<multiple>Y</multiple>
+				</proxyProtocol>
+				<protocol type="OptionField">
+					<default>tcp</default>
+					<OptionValues>
+						<tcp>tcp</tcp>
+						<udp>udp</udp>
+					</OptionValues>
+					<multiple>Y</multiple>
+				</protocol>
+				<command type="OptionField">
+					<default>connect</default>
+					<OptionValues>
+						<connect>connect</connect>
+						<bind>bind</bind>
+						<bindreply>bindreply</bindreply>
+						<udpassociate>udpassociate</udpassociate>
+						<udpreply>udpreply</udpreply>
+					</OptionValues>
+					<multiple>Y</multiple>
+				</command>
+			</route>
+		</routes>
+	</items>
+</model>

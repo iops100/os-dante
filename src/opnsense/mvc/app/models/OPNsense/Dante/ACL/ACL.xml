@@ -1,0 +1,10 @@
+<acl>
+    <page-services-dante>
+        <name>Services: Dante</name>
+        <patterns>
+            <pattern>ui/dante/*</pattern>
+            <pattern>api/dante/*</pattern>
+            <pattern>diag_logs_dante.php</pattern>
+        </patterns>
+    </page-services-dante>
+</acl>

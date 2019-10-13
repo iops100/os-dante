@@ -1,0 +1,47 @@
+<form>
+	<field>
+		<label>Rule order: </label>
+		<id>client.rulePosition</id>
+		<help><![CDATA[Order rules]]></help>
+		<!-- <style>ui-sortable-handle</style>  -->
+		<type>text</type>
+	</field>
+	<field>
+		<label>Pass/Block rule: </label>
+		<id>client.RuleType</id>
+		<help><![CDATA[Select if the rule is Pass or Block]]></help>
+		<type>dropdown</type>
+	</field>
+	<field>
+		<label>FQDN or IP/CIDR:</label>
+		<id>client.fromIp</id>
+		<help><![CDATA[FQDN or IP/CIDR]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>Source Port(s): </label>
+		<id>client.fromPort</id>
+		<type>text</type>
+	</field>
+	<field>
+		<label>Connected Interface: </label>
+		<id>client.interface</id>
+		<help><![CDATA[You can select a valid Interface OR use Connect IP]]></help>
+		<type>dropdown</type>
+	</field>
+	<field>
+		<label>Connected IP: </label>
+		<id>client.interfaceIp</id>
+		<help><![CDATA[If you use Connected IP, it become Primary]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>Log Type </label>
+		<id>client.LogsType</id>
+		<help><![CDATA[Used to control logging.  Accepted keywords are connect,
+              disconnect, data, error, ioop, and tcpinfo.  The default is no
+              logging.
+]]></help>
+		<type>select_multiple</type>
+	</field>
+</form>

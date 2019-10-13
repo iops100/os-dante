@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+#
+# PROVIDE: dante
+# REQUIRE: DAEMON
+# BEFORE: LOGIN
+#
+# This rc script understands the following variables
+# which are read from /etc/rc.conf:
+#
+# dante_enable  (bool): Set to "NO" by default.
+#                         Set it to "YES" to enable Privoxy.
+# dante_config   (str): Privoxy's configuration file. Default is:
+#                         /usr/local/etc/sockd/config.
+# dante_flags    (str): List of additional Privoxy options you want
+#                         to use. None set by default.
+# dante_pidfile  (str): Default is /var/run/sockd/sockd.pid.
+# dante_user     (str): Privoxy Daemon user. Default is sockd.
+#
+# Usage:
+# /usr/local/etc/rc.d/sockd [fast|force|one](start|stop|restart|rcvar|status|poll)
+
+. /etc/rc.subr
+
+name="sockd"
+rcvar=sockd_enable
+load_rc_config ${name}
+
+: ${dante_enable="NO"}
+: ${dante_config="/usr/local/etc/Dante/sockd.conf"}
+: ${dante_logdir="/var/log/Dante_opnsense"}
+: ${dante_user="proxy"}
+: ${dante_piddir="/var/run/Dante_opnsense"}
+: ${dante_pidfile="${dante_piddir}/sockd.pid"}
+
+dante_prestart () {
+    if [ ! -e "${dante_config}" ]; then
+        echo "config file not found. Copying the example file to ${dante_config}."
+    fi
+    if [ ! -e "${dante_logdir}" ]; then
+        echo "${dante_logdir} not found. Creating ..."
+        mkdir "${dante_logdir}"
+        chown "${dante_user}:${dante_user}" "${dante_logdir}"
+        chmod 0750 "${dante_logdir}"
+    fi
+    if [ ! -d "${dante_piddir}" ]; then
+        mkdir -p "${dante_piddir}"
+        chown "${dante_user}:${dante_user}" "${dante_piddir}"
+    fi
+}
+
+start_precmd="dante_prestart"
+
+command="/usr/local/sbin/sockd"
+command_args="${dante_flags} -D -p ${dante_pidfile} -f ${dante_config}"
+
+run_rc_command "$1"

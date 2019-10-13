@@ -1,0 +1,58 @@
+<model>
+	<mount>//OPNsense/dante/clientslist</mount>
+	<description>Opnsense Package to manage Dante Systems</description>
+	<version>1.1.0</version>
+	<items>
+		<clients>
+			<client type="ArrayField">
+				<rulePosition type="IntegerField">
+					<default>1</default>
+					<MinimumValue>1</MinimumValue>
+					<MaximumValue>999</MaximumValue>
+					<Required>Y</Required>
+				</rulePosition>
+				<RuleType type="OptionField">
+					<default>pass</default>
+					<OptionValues>
+						<pass>Pass</pass>
+						<block>Block</block>
+					</OptionValues>
+					<Required>Y</Required>
+				</RuleType>
+				<fromIp type="TextField">
+					<default></default>
+					<Required>Y</Required>
+				</fromIp>
+				<fromPort type="TextField">
+					<default>1-65535</default>
+				</fromPort>
+				<interface type="InterfaceField">
+					<Required>N</Required>
+					<default>lan</default>
+					<multiple>N</multiple>
+					<AddParentDevices>Y</AddParentDevices>
+					<filters>
+						<enable>/^(?!0).*$/</enable>
+						<type>/(?s)^((?!group).)*$/</type>
+					</filters>
+				</interface>
+				<interfaceIp type="TextField">
+					<default></default>
+					<Required>N</Required>
+				</interfaceIp>
+				<LogsType type="OptionField">
+					<default>error,connect,disconnect</default>
+					<OptionValues>
+						<connect>connect</connect>
+						<data>data</data>
+						<disconnect>disconnect</disconnect>
+						<error>error</error>
+						<ioop>ioop</ioop>
+						<tcpinfo>tcpinfo</tcpinfo>
+					</OptionValues>
+					<multiple>Y</multiple>
+				</LogsType>
+			</client>
+		</clients>
+	</items>
+</model>

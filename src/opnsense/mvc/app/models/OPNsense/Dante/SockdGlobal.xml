@@ -1,0 +1,104 @@
+<model>
+	<mount>//OPNsense/dante/sockdglobal</mount>
+	<description>Opnsense Package to manage Dante Systems</description>
+	<version>1.1.0</version>
+	<items>
+		<global>
+			<enabled type="BooleanField">
+				<default>0</default>
+				<Required>Y</Required>
+			</enabled>
+			<internalInterfaces type="InterfaceField">
+				<Required>Y</Required>
+				<default>opt1</default>
+				<multiple>Y</multiple>
+				<AddParentDevices>Y</AddParentDevices>
+				<filters>
+					<enable>/^(?!0).*$/</enable>
+					<type>/(?s)^((?!group).)*$/</type>
+				</filters>
+				<!-- <showvirtualips/> <showips/> -->
+			</internalInterfaces>
+			<listenLocalhost type="BooleanField">
+				<default>0</default>
+			</listenLocalhost>
+			<listenPort type="IntegerField">
+				<default>1080</default>
+				<MinimumValue>1024</MinimumValue>
+				<MaximumValue>65535</MaximumValue>
+				<Required>Y</Required>
+			</listenPort>
+			<externalInterfaces type="InterfaceField">
+				<Required>Y</Required>
+				<default>lan</default>
+				<multiple>Y</multiple>
+				<AddParentDevices>Y</AddParentDevices>
+				<filters>
+					<enable>/^(?!0).*$/</enable>
+					<type>/(?s)^((?!group).)*$/</type>
+				</filters>
+				<!-- <showvirtualips/> <showips/> -->
+			</externalInterfaces>
+			<externalRotation type="OptionField">
+				<default>none</default>
+				<OptionValues>
+					<none>None</none>
+					<route>Route</route>
+					<samesame>Same-Same</samesame>
+				</OptionValues>
+				<Required>Y</Required>
+			</externalRotation>
+			<srcHost type="OptionField">
+				<default>none</default>
+				<multiple>Y</multiple>
+				<OptionValues>
+					<nodnsunknown>nodnsunknown</nodnsunknown>
+					<nodnsmismatch>nodnsmismatch</nodnsmismatch>
+				</OptionValues>
+			</srcHost>
+			<outputMethod type="OptionField">
+				<default>stderr</default>
+				<multiple>Y</multiple>
+				<OptionValues>
+					<syslog>Syslog</syslog>
+					<stdout>Stdout</stdout>
+					<stderr>Stderr</stderr>
+				</OptionValues>
+			</outputMethod>
+			<logOutput type="TextField">
+				<Required>Y</Required>
+				<default>sockd.log</default>
+			</logOutput>
+			<clientMethod type="TextField">
+				<Required>Y</Required>
+				<default>none #username rfc931 pam</default>
+			</clientMethod>
+			<socksMethod type="TextField">
+				<Required>Y</Required>
+				<default>none #username rfc931 pam</default>
+			</socksMethod>
+			<userPrivileged type="TextField">
+				<Required>Y</Required>
+				<default>proxy</default>
+			</userPrivileged>
+			<userUnPrivileged type="TextField">
+				<Required>Y</Required>
+				<default>proxy</default>
+			</userUnPrivileged>
+			<clientTimeout type="IntegerField">
+				<default>0</default>
+				<MinimumValue>0</MinimumValue>
+				<MaximumValue>999</MaximumValue>
+				<Required>Y</Required>
+			</clientTimeout>
+			<socketTimeout type="IntegerField">
+				<default>30</default>
+				<MinimumValue>0</MinimumValue>
+				<MaximumValue>999</MaximumValue>
+				<Required>Y</Required>
+			</socketTimeout>
+			<userParams type="TextField">
+			</userParams>
+		</global>
+	</items>
+</model>

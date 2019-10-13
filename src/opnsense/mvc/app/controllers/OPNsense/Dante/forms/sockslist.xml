@@ -1,0 +1,62 @@
+<form>
+	<field>
+		<label>Rule order: </label>
+		<id>sock.rulePosition</id>
+		<help><![CDATA[Order rules]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>Pass/Block rule: </label>
+		<id>sock.RuleType</id>
+		<help><![CDATA[Select if the rule is Pass or Block]]></help>
+		<type>dropdown</type>
+	</field>
+	<field>
+		<label>FROM : FQDN or IP/CIDR:</label>
+		<id>sock.fromIp</id>
+		<help><![CDATA[FQDN or IP/CIDR
+CIDR is Mandatory in case of IP]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>TO : FQDN or IP/CIDR:</label>
+		<id>sock.toIp</id>
+		<help><![CDATA[FQDN or IP/CIDR
+CIDR is Mandatory in case of IP]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>TO : target Port or Service: </label>
+		<id>sock.toPort</id>
+		<help><![CDATA[Could be a port number between 1 to 65535
+Or Service name (http, https, ssh)]]></help>
+		<type>text</type>
+	</field>
+		<field>
+		<label>Log Type </label>
+		<id>sock.LogsType</id>
+		<help><![CDATA[Used to control logging.  Accepted keywords are connect,
+              disconnect, data, error, ioop, and tcpinfo.  The default is no
+              logging.]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>Protocol: </label>
+		<id>sock.protocol</id>
+		<help><![CDATA[The rule applies to the given protocols.  Valid values are tcp and udp.  The default is all supported protocols that can apply to the given commands.
+]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>Client Method: </label>
+		<id>sock.clientMethod</id>
+		<help><![CDATA[A list of acceptable authentication methods for client-rules,
+              listed in order of preference.  These are authentication methods
+              that are to be checked immediately after the SOCKS client has
+              connected to Dante, and before any socks-negotiation has
+              started.
+
+              Supported values are pam.address, pam.any, none, and rfc931]]></help>
+		<type>select_multiple</type>
+	</field>
+</form>

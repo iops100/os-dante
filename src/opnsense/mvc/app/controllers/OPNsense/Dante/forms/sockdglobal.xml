@@ -1,0 +1,151 @@
+<form>
+	<field>
+		<label>Enabled</label>
+		<id>sockdglobal.global.enabled</id>
+		<help><![CDATA[Enable Dante service.]]></help>
+		<type>checkbox</type>
+	</field>
+	<field>
+		<label>Internal Interfaces</label>
+		<id>sockdglobal.global.internalInterfaces</id>
+		<help><![CDATA[Select the internal interfaces, such as LAN, where Dante listen]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>Use Localhost as Internal Interface</label>
+		<id>sockdglobal.global.listenLocalhost</id>
+		<help><![CDATA[Select if SockdIOPS must listen localhost with or without previous "Internal Interfaces".]]></help>
+		<type>checkbox</type>
+	</field>
+	<field>
+		<label>Listen Port</label>
+		<id>sockdglobal.global.listenPort</id>
+		<help><![CDATA[Listen port for connections to Dante]]></help>
+		<type>text</type>
+	</field>
+	<field>
+		<label>External Interfaces</label>
+		<id>sockdglobal.global.externalInterfaces</id>
+		<help><![CDATA[Select the external interfaces, such as Wan, where Dante listen]]></help>
+		<type>select_multiple</type>
+	</field>
+	<field>
+		<label>External Rotation</label>
+		<id>sockdglobal.global.externalRotation</id>
+		<help>
+				<![CDATA[
+If more than one external address is given, this governs which of the given addresses is selected as the source address for a given outgoing connections/packet. Note that regardless of what sort of external rotation you use, all addresses you want to choose from must be listed via the external keyword first.<br />
+Valid values are none (the default), route, and same-same.<br /> 
+none indicates the first address on the list of external addresses should be used.<br /> 
+<br />
+route indicates the kernels routing table should be consulted to find out what the source address for a given destination will be, and might require you to set user.privileged to root. Note that route might create problems for ftp-clients using active ftp if the Dante bind extension is enabled for the ftp-client.<br /> 
+<br />
+same-same indicates the source address for a given destination should be the same address as the Dante server accepted the client's connection on. 
+				]]>
+		</help>
+		<type>dropdown</type>
+	</field>
+	<field>
+		<label>Source Host</label>
+		<id>sockdglobal.global.srcHost</id>
+		<help>Enable Source Host DNS Validation (nodnsunknown nodnsmismatch).
+		</help>
+		<type>select_multiple</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Output Log Method Rotation</label>
+		<id>sockdglobal.global.outputMethod</id>
+		<help><![CDATA[the server will log both via syslog, to stdout and to /var/log/Dante_pfsense/sockd.log]]></help>
+		<type>select_multiple</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Output Log File</label>
+		<id>sockdglobal.global.logOutput</id>
+		<help>Log File Name</help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Client Method</label>
+		<id>sockdglobal.global.clientMethod</id>
+		<help><![CDATA[
+list over acceptable authentication methods, order of preference.<br />
+An authentication method not set here will never be selected.<br />
+<br />
+If the socksmethod field is not set in a rule, the global<br />
+socksmethod is filled in for that rule.<br />
+<br />
+methods for client-rules.
+				]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Socks Method</label>
+		<id>sockdglobal.global.socksMethod</id>
+		<help><![CDATA[
+list over acceptable authentication methods, order of preference.<br />
+An authentication method not set here will never be selected.<br />
+<br />
+If the socksmethod field is not set in a rule, the global<br />
+socksmethod is filled in for that rule.<br />
+<br />
+methods for socks-rules.
+				]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>User Privileged</label>
+		<id>sockdglobal.global.userPrivileged</id>
+		<help><![CDATA[when doing something that can require privilege, it will use the userid "sockd".]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>User UnPrivileged</label>
+		<id>sockdglobal.global.userUnPrivileged</id>
+		<help><![CDATA[when running as usual, it will use the unprivileged userid of "sockd".]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Client Timeout</label>
+		<id>sockdglobal.global.clientTimeout</id>
+		<help><![CDATA[
+how many seconds can the client and it's peer idle without sending<br />
+any data before we dump it?  Unless you disable tcp keep-alive for<br />
+some reason, it's probably best to set this to 0, which is<br />
+"forever".<br />
+timeout.io: 0 # or perhaps 86400, for a day.
+				]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>Socket Timeout</label>
+		<id>sockdglobal.global.socketTimeout</id>
+		<help><![CDATA[
+how many seconds can pass from when a client connects til it has<br />
+sent us it's request?  Adjust according to your network performance<br />
+and methods supported.<br />
+timeout.negotiate: 30   # on a lan, this should be enough.
+				]]></help>
+		<type>text</type>
+		<advanced>true</advanced>
+	</field>
+	<field>
+		<label>UserDef</label>
+		<id>sockdglobal.global.userParams</id>
+		<type>text</type>
+		<help>
+				<![CDATA[
+				User-defined parameter(s) to monitor. There can be multiple user-defined parameters.<br />
+				Example: <em>Parameter: value</em>
+				]]>
+		</help>
+		<advanced>true</advanced>
+	</field>
+</form>
